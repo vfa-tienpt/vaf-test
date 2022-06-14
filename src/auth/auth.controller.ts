@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 import { LoginStatus } from './interfaces/login-status.interface';
 import { JwtPayload } from './interfaces/payload.interface';
 import { AuthGuard } from '@nestjs/passport';
-import { LoginUserDto } from 'src/dto/user-login.dto';
+import { LoginUserDto } from '../dto/user-login.dto';
 
 @Controller('auth')
 export class AuthController {

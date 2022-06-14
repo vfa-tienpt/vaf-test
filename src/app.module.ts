@@ -1,23 +1,28 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConnectionOptions } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
+import { UserEntity } from './entity/user.entity';
 import { UsersModule } from './users/users.module';
 
-@Module({})
-export class AppModule {
-  static forRoot(connOptions: ConnectionOptions): DynamicModule {
-    return {
-      module: AppModule,
-      controllers: [AppController],
-      imports: [
-        AuthModule,
-        UsersModule,
-        TypeOrmModule.forRoot(connOptions),
-      ],
-      providers: [AppService],
-    };
-  }
-}
+@Module({
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'mysql',
+      host: 'localhost',
+      port: 3306,
+      username: 'root',
+      password: 'Tien206@',
+      database: 'test',
+      entities: [UserEntity],
+      synchronize: true,
+      autoLoadEntities: true,
+    }),
+    AuthModule,
+    UsersModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+export class AppModule {}
