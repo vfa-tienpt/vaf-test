@@ -1,11 +1,11 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { UserEntity } from './entity/user.entity';
-import { UserDto } from 'src/dto/user.dto';
-import { LoginUserDto } from 'src/dto/user-login.dto';
-import { comparePasswords } from 'src/share/utils';
-import { toUserDto } from 'src/share/mapper';
+import { UserEntity } from '../entity/user.entity';
+import { UserDto } from '../dto/user.dto';
+import { LoginUserDto } from '../dto/user-login.dto';
+import { comparePasswords } from '../share/utils';
+import { toUserDto } from '../share/mapper';
 
 @Injectable()
 export class UsersService {
