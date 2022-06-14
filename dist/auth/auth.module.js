@@ -13,11 +13,13 @@ const auth_service_1 = require("./auth.service");
 const jwt_1 = require("@nestjs/jwt");
 const passport_1 = require("@nestjs/passport");
 const jwt_strategy_1 = require("./jwt.strategy");
+const users_module_1 = require("../users/users.module");
 let AuthModule = class AuthModule {
 };
 AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            users_module_1.UsersModule,
             passport_1.PassportModule.register({
                 defaultStrategy: 'jwt',
                 property: 'user',
